@@ -9,10 +9,10 @@
            :class="{isActivity:nowNav==item.id}"
            draggable="true"
            @dragover="allowDrop"
-           @drop="dropDiv"
-           @dragstart="dragStart"
+           @drop="dropDiv(item.id)"
+           @dragstart="dragStart(item.id)"
            @click="SetNowNav(item.id)">
-        <span>{{item.text}}{{item.id}}</span>
+        <span>{{item.text}}</span>
         <div v-if="!item.isMain"
              class="btn-close"
              @click.stop="CloseTab(item.id)">x</div>
@@ -48,6 +48,8 @@ export default {
   name: 'topNav',
   data () {
     return {
+      oldid: -1,
+      newid: -1,
       openNav: this.$parent.openNav,
       nowNav: 1,
       userInfo: {
@@ -73,13 +75,12 @@ export default {
     allowDrop (ev) {
       ev.preventDefault();
     },
-    dragStart (ev) {
-      console.log(22);
-      console.log(ev);
+    dragStart (id) {
+      this.oldid = id;
     },
-    dropDiv (ev) {
-      console.log(11);
-      console.log(ev);
+    dropDiv (id) {
+      this.newid = id;
+      this.$parent.UpdateNavPosition(this.newid, this.oldid);
     }
   }
 }

@@ -79,8 +79,23 @@ export default {
         }
       }
     },
-    UpdateNavPosition (navId, NewPosition) {
-
+    UpdateNavPosition (id1, id2) {
+      var temp = {};
+      var index1 = -1;
+      var index2 = -1;
+      for (var i = 0; i < this.openNav.length; i++) {
+        if (this.openNav[i].id == id1) {
+          index1 = i;
+        }
+        if (this.openNav[i].id == id2) {
+          index2 = i;
+        }
+      }
+      if (index1 + index2 > 0) {
+        temp = this.openNav[index1];
+        this.openNav[index1] = this.openNav[index2];
+        this.openNav[index2] = temp;
+      }
     },
     InitNavPostion () {
 

@@ -43,20 +43,6 @@ import '../../../public/static/Content/Css/nav.css'
 
 export default {
   name: 'LeftNav',
-  created () {
-    // var param = {};
-    // $.ajax({
-    //   host: myconfig.ToolsHost,
-    //   url: '/api/Document/SubmitOCR',
-    //   CORS: true,
-    //   data: param,
-    //   type: 'POST',
-    //   dataType: 'json',
-    //   success: function (data) {
-    //     navs = data.model
-    //   }
-    // });
-  },
   data () {
     return {
       SystemName: '题库管理后台',
